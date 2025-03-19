@@ -1,103 +1,151 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+export default function registerPage(){
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+      <section className="bg-white">
+        <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
+          <section className="relative flex h-32 items-end bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6">
+            <img
+                alt=""
+                src="https://images.unsplash.com/photo-1617195737496-bc30194e3a19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                className="absolute inset-0 h-full w-full object-cover opacity-80"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+            <div className="hidden lg:relative lg:block lg:p-12">
+              <a className="block text-white" href="#">
+                <span className="sr-only">Home</span>
+                <svg
+                    className="h-8 sm:h-10"
+                    viewBox="0 0 28 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                </svg>
+              </a>
+
+              <h2 className="mt-6 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
+                Smart Logistic
+              </h2>
+
+              <p className="mt-4 leading-relaxed text-white/90">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi nam dolorum aliquam,
+                quibusdam aperiam voluptatum.
+              </p>
+            </div>
+          </section>
+
+          <main
+              className="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6"
           >
-            Read our docs
-          </a>
+            <div className="max-w-xl lg:max-w-3xl">
+              <div className="relative -mt-16 block lg:hidden">
+                <a
+                    className="inline-flex size-16 items-center justify-center rounded-full bg-white text-blue-600 sm:size-20"
+                    href="#"
+                >
+                  <span className="sr-only">Home</span>
+                  <svg
+                      className="h-8 sm:h-10"
+                      viewBox="0 0 28 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                  >
+                  </svg>
+                </a>
+              </div>
+              <h1 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
+                Bienvenido a Smart Logistic
+              </h1>
+              <p className="mt-4 leading-relaxed text-gray-500">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi nam dolorum aliquam,
+                quibusdam aperiam voluptatum.
+              </p>
+              <form action="#" className="mt-8 grid grid-cols-6 gap-6">
+                <div className="col-span-6 sm:col-span-3">
+                  <label htmlFor="FirstName" className="block text-sm font-medium text-gray-700">
+                    Nombre
+                  </label>
+
+                  <input
+                      type="text"
+                      id="FirstName"
+                      name="first_name"
+                      className="border h-8 mt-1 w-full rounded-md border-gray-500 bg-white text-sm text-gray-700 shadow-xs"
+                  />
+                </div>
+
+                <div className="col-span-6 sm:col-span-3">
+                  <label htmlFor="LastName" className="block text-sm font-medium text-gray-700">
+                    Apellido
+                  </label>
+
+                  <input
+                      type="text"
+                      id="LastName"
+                      name="last_name"
+                      className="border h-8 mt-1 w-full rounded-md border-gray-500 bg-white text-sm text-gray-700 shadow-xs"
+                  />
+                </div>
+
+                <div className="col-span-6">
+                  <label htmlFor="Email" className="block text-sm font-medium text-gray-700"> Email </label>
+
+                  <input
+                      type="email"
+                      id="Email"
+                      name="email"
+                      className="border mt-1 h-8 w-full rounded-md border-gray-500 bg-white text-sm text-gray-700 shadow-xs"
+                  />
+                </div>
+
+                <div className="col-span-6 sm:col-span-3">
+                  <label htmlFor="Password" className="block text-sm font-medium text-gray-700"> Contraseña </label>
+
+                  <input
+                      type="password"
+                      id="Password"
+                      name="password"
+                      className="border h-8 mt-1 w-full rounded-md border-gray-500 bg-white text-sm text-gray-700 shadow-xs"
+                  />
+                </div>
+
+                <div className="col-span-6 sm:col-span-3">
+                  <label htmlFor="PasswordConfirmation" className="block text-sm font-medium text-gray-700">
+                    Confirmar contraseña
+                  </label>
+
+                  <input
+                      type="password"
+                      id="PasswordConfirmation"
+                      name="password_confirmation"
+                      className="border h-8 mt-1 w-full rounded-md border-gray-500 bg-white text-sm text-gray-700 shadow-xs"
+                  />
+                </div>
+                <div className="col-span-6">
+                  <p className="text-sm text-gray-500">
+                    By creating an account, you agree to our
+                    <a href="#" className="text-gray-700 underline"> terms and conditions </a>
+                    and
+                    <a href="#" className="text-gray-700 underline">privacy policy</a>.
+                  </p>
+                </div>
+
+                <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
+                  <button
+                      className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:ring-3 focus:outline-hidden"
+                  >
+                    Crear cuenta
+                  </button>
+
+                  <p className="mt-4 text-sm text-gray-500 sm:mt-0">
+                    ¿Ya tienes una cuenta?
+                    <a href="#" className="text-blue-500 "> Inicia sesión</a>.
+                  </p>
+                </div>
+              </form>
+            </div>
+          </main>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
   );
 }
