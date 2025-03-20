@@ -3,6 +3,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import {AuthData} from "@/lib/authTypes";
+import {useRouter} from "next/navigation";
 import {register} from "@/services/auth";
 
 export default function RegisterPage() {
@@ -38,9 +39,11 @@ export default function RegisterPage() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        const router = useRouter()
         try {
             const response = await register(formData);
             console.log("Registro exitoso:", response);
+            router.push("/login")
         } catch (error) {
             console.error(error);
         }
