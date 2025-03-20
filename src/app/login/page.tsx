@@ -24,8 +24,13 @@ export default function loginPage(){
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
-        setEmail(e.target.value)
-        setPassword(e.target.value)
+        const {name,value} = e.target;
+        if(name==='email'){
+            setEmail(e.target.value)
+        }
+        if(name==='password'){
+            setPassword(e.target.value)
+        }
     }
 
     return (
