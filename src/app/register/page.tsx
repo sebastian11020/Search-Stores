@@ -58,9 +58,9 @@ export default function RegisterPage() {
                     </label>
                     <select
                         id="documentType"
-                        name="documentType"
-                        required
+                        name="typeDocument"
                         onChange={handleChange}
+                        required
                         className="border h-8 mt-1 w-full rounded-md border-gray-500 bg-white text-sm text-gray-700 shadow-xs"
                     >
                         <option value="">Selecciona...</option>
@@ -77,7 +77,7 @@ export default function RegisterPage() {
                     <input
                         type="text"
                         id="documentNumber"
-                        name="documentNumber"
+                        name="numberDocument"
                         onChange={handleChange}
                         required
                         className="border h-8 mt-1 w-full rounded-md border-gray-500 bg-white text-sm text-gray-700 shadow-xs"
@@ -91,24 +91,24 @@ export default function RegisterPage() {
                     <input
                         type="text"
                         id="FirstName"
-                        name="first_name"
-                        required
+                        name="name"
                         onChange={handleChange}
+                        required
                         className="border h-8 mt-1 w-full rounded-md border-gray-500 bg-white text-sm text-gray-700 shadow-xs"
                     />
                 </div>
 
                 {/* Apellido */}
                 <div className="col-span-6 sm:col-span-3">
-                    <label htmlFor="LastName" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
                         Apellido
                     </label>
                     <input
                         type="text"
                         id="LastName"
-                        required
-                        name="last_name"
+                        name="lastName"
                         onChange={handleChange}
+                        required
                         className="border h-8 mt-1 w-full rounded-md border-gray-500 bg-white text-sm text-gray-700 shadow-xs"
                     />
                 </div>
@@ -121,8 +121,8 @@ export default function RegisterPage() {
                         type="email"
                         id="Email"
                         name="email"
-                        required
                         onChange={handleChange}
+                        required
                         className="border mt-1 h-8 w-full rounded-md border-gray-500 bg-white text-sm text-gray-700 shadow-xs"
                     />
                 </div>
@@ -135,7 +135,7 @@ export default function RegisterPage() {
                         type="text"
                         id="phone"
                         required
-                        name="phoneNumber"
+                        name="phone"
                         onChange={handleChange}
                         className="border mt-1 h-8 w-full rounded-md border-gray-500 bg-white text-sm text-gray-700 shadow-xs"
                     />
