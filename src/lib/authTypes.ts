@@ -6,5 +6,4 @@ export interface AuthData {
     phone: number;
     email: string;
     password: string;
-    rol: "conductor"
 }

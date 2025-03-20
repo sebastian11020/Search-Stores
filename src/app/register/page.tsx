@@ -21,8 +21,15 @@ export default function RegisterPage() {
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>{
-        setFormData({...formData, [e.target.name]: e.target.value});
-        setPassword(e.target.value);
+        const { name, value } = e.target;
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            [name]: value
+        }));
+
+        if (name === "password") {
+            setPassword(value);
+        }
      };
     const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setConfirmPassword(e.target.value);
