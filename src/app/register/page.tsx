@@ -5,11 +5,13 @@ import React, { useState } from "react";
 import {AuthData} from "@/lib/authTypes";
 import {useRouter} from "next/navigation";
 import {register} from "@/services/auth";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function RegisterPage() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
     const [formData, setFormData] = useState<AuthData>({
         typeDocument:"",
         numberDocument:0,
@@ -148,21 +150,30 @@ export default function RegisterPage() {
                     <label htmlFor="Password" className="block text-sm font-medium text-gray-700">
                         Contraseña
                     </label>
-                    <input
-                        type="password"
-                        id="Password"
-                        name="password"
-                        required
-                        value={password}
-                        onChange={handleChange}
-                        className="border h-8 mt-1 w-full rounded-md border-gray-500 bg-white text-sm text-gray-700 shadow-xs"
-                    />
+                    <div className="relative">
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            id="Password"
+                            name="password"
+                            required
+                            onChange={handleChange}
+                            className="border h-8 mt-1 w-full rounded-md border-gray-500 bg-white text-sm text-gray-700 shadow-xs"
+                        />
+                        <button
+                            type="button"
+                            onClick={() => setShowPassword(!showPassword)}
+                            className="absolute inset-y-0 right-2 flex items-center text-gray-500 hover:text-gray-700"
+                        >
+                            {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                        </button>
+                    </div>
                 </div>
 
                 <div className="col-span-6 sm:col-span-3">
                     <label htmlFor="PasswordConfirmation" className="block text-sm font-medium text-gray-700">
                         Confirmar contraseña
                     </label>
+                    <div className="relative">
                     <input
                         type="password"
                         id="PasswordConfirmation"
@@ -175,8 +186,8 @@ export default function RegisterPage() {
                         }`}
                     />
                     {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
+                    </div>
                 </div>
-
                 <div className="col-span-6">
                     <p className="text-sm text-gray-500">
                         Al crear una cuenta, aceptas nuestros
