@@ -97,6 +97,8 @@ function DashboardPage(){
                             max="100"
                             className="mt-1 w-full p-2 border border-gray-300 rounded-md"
                             placeholder="Ingrese el porcentaje"
+                            value={porcentaje}
+                            onChange={(e)=>setPorcentaje(e.target.value)}
                         />
                     </div>
                     <div className="mt-4">
@@ -106,6 +108,8 @@ function DashboardPage(){
                             min="0"
                             className="mt-1 w-full p-2 border border-gray-300 rounded-md"
                             placeholder="Ingrese la distancia en m"
+                            value={rango}
+                            onChange={(e)=>setRango(e.target.value)}
                         />
                     </div>
                     <div className="mt-4 flex justify-between gap-4">
