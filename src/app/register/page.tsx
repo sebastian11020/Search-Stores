@@ -6,6 +6,7 @@ import {AuthData} from "@/lib/authTypes";
 import {useRouter} from "next/navigation";
 import {register} from "@/services/auth";
 import { Eye, EyeOff } from "lucide-react";
+import SelectInput from "@/components/ui/select";
 
 export default function RegisterPage() {
     const [password, setPassword] = useState("");
@@ -56,23 +57,18 @@ export default function RegisterPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}>
             <form onSubmit={handleSubmit} action="#" className="mt-8 grid grid-cols-6 gap-6">
-
                 <div className="col-span-6 sm:col-span-3">
-                    <label htmlFor="documentType" className="block text-sm font-medium text-gray-700">
-                        Tipo de Documento
-                    </label>
-                    <select
-                        id="documentType"
-                        name="typeDocument"
-                        onChange={handleChange}
-                        required
-                        className="border h-8 mt-1 w-full rounded-md border-gray-500 bg-white text-sm text-gray-700 shadow-xs"
-                    >
-                        <option value="">Selecciona...</option>
-                        <option value="cc">Cédula de Ciudadanía</option>
-                        <option value="ce">Cédula de Extranjería</option>
-                        <option value="passport">Pasaporte</option>
-                    </select>
+                    <SelectInput label="Tipo Documento"
+                                 name="typeDocument"
+                                 value={formData.typeDocument}
+                                 onChange={handleChange}
+                                 required={true}
+                                 options={[
+                                     {value:"CC",label:"Cedula de ciudadania"},
+                                     {value: "PS",label: "Pasaporte"},
+                                     {value: "CE",label: "Cedula Extranjera"}
+                                 ]}
+                    />
                 </div>
 
                 <div className="col-span-6 sm:col-span-3">
