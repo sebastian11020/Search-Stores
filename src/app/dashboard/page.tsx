@@ -15,8 +15,8 @@ function DashboardPage(){
         getParameters()
             .then((data) => {
                 setProducts(data.products);
-                setPorcentaje(data.porcentageVirtualStore.toString());
-                setRango(data.minimunDistance.toString());
+                setPorcentaje(data.porcentageVirtualStore);
+                setRango(data.minimunDistance);
             })
             .catch((error) => console.error("Error al obtener parámetros:", error));
     }, []);
