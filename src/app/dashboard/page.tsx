@@ -7,10 +7,11 @@ import React, {useState,useEffect} from "react";
 import {saveParameters} from "@/services/parameters";
 import {getParameters} from "@/services/parameters";
 import AlertError from "@/components/ui/alertError";
+import {ProductType} from "@/lib/productsType";
 import AlertSucsess from "@/components/ui/alertSucsess";
 
 function DashboardPage(){
-    const [products,setProducts] = useState([])
+    const [products, setProducts] = useState<ProductType[]>([]);
     const [isModalOpen,setIsModalOpen] = useState(false);
     const [porcentaje,setPorcentaje]=useState("")
     const [rango,setRango]=useState("")
@@ -27,7 +28,6 @@ function DashboardPage(){
                 porcentageVirtualStore: Number(porcentaje),
                 minimunDistance: Number(rango),
             };
-
             const response = await saveParameters(payload, token);
             if(response.ok){
                 setSuccessMessage("Los parámetros se guardaron correctamente.");
@@ -44,8 +44,17 @@ function DashboardPage(){
         }
     };
 
+    const handleQuantityChange = (index: number, newQuantity: number) => {
+        setProducts((prevProducts) => {
+            const updatedProducts = [...prevProducts];
+            updatedProducts[index] = { ...updatedProducts[index], quantity: newQuantity };
+            return updatedProducts;
+        });
+    };
+
     useEffect(() => {
-        getParameters()
+        const token = localStorage.getItem("token") || "";
+        getParameters(token)
             .then((data) => {
                 setProducts(data.products);
                 setPorcentaje(data.porcentageVirtualStore);
@@ -76,6 +85,7 @@ function DashboardPage(){
                                 description={product.description}
                                 url={product.url}
                                 quantity={product.quantity}
+                                onQuantityChange={(newQuantity) => handleQuantityChange(index, newQuantity)}
                             />
                         ))
                     ) : (
@@ -97,7 +107,7 @@ function DashboardPage(){
                             max="100"
                             className="mt-1 w-full p-2 border border-gray-300 rounded-md"
                             placeholder="Ingrese el porcentaje"
-                            value={porcentaje}
+                            value={porcentaje ?? ""}
                             onChange={(e)=>setPorcentaje(e.target.value)}
                         />
                     </div>
@@ -108,7 +118,7 @@ function DashboardPage(){
                             min="0"
                             className="mt-1 w-full p-2 border border-gray-300 rounded-md"
                             placeholder="Ingrese la distancia en m"
-                            value={rango}
+                            value={rango ?? ""}
                             onChange={(e)=>setRango(e.target.value)}
                         />
                     </div>

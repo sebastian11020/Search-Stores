@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useState } from "react";
 import QuantitySelect from "@/components/ui/quantitySelect";
 
-interface productProps{
-    name:string;
-    description:string;
-    quantity:number;
-    url:string;
+interface ProductProps {
+    name: string;
+    description: string;
+    quantity: number;
+    url: string;
+    onQuantityChange: (newQuantity: number) => void;
 }
 
-export default function Product ({name,description,quantity,url}:productProps){
+export default function Product({ name, description, quantity, url, onQuantityChange }: ProductProps) {
     return (
-        <a href="#" className="group block">
+        <a className="group block">
             <img
                 src={url}
                 alt=""
@@ -23,8 +24,8 @@ export default function Product ({name,description,quantity,url}:productProps){
                 <p className="mt-1.5 text-xs text-pretty text-gray-500">
                     {description}
                 </p>
-                <QuantitySelect initialQuantity={quantity}></QuantitySelect>
+                <QuantitySelect initialQuantity={quantity} onChangeQuantity={onQuantityChange} />
             </div>
         </a>
-    )
+    );
 }

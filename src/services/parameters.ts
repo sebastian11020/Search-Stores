@@ -1,8 +1,12 @@
 import api from "@/utils/api";
 
-export const getParameters = async () => {
+export const getParameters = async (token:string) => {
     try {
-        const response = await api.get("http://localhost:8080/Store/Parameters");
+        const response = await api.get("http://localhost:8080/Store/Parameters",{
+            headers: {
+                "Content-Type": "application/json", "Authorization": `Bearer ${token}`,
+            }
+        })
         return response.data; // Retornamos el objeto completo
     } catch (error: any) {
         console.error("Error fetching parameters:", error);
