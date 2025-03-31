@@ -11,14 +11,15 @@ function DashboardPage(){
     const [isModalOpen,setIsModalOpen] = useState(false);
     const [porcentaje,setPorcentaje]=useState("")
     const [rango,setRango]=useState("")
-    useEffect(()=>{
+    useEffect(() => {
         getParameters()
-            .then((data=>{
-                setProducts(data.products)
-                setPorcentaje(data.porcentageVirtualStore.toString())
-                setRango(data.minimunDistance.toString())
-            }))
-    })
+            .then((data) => {
+                setProducts(data.products);
+                setPorcentaje(data.porcentageVirtualStore.toString());
+                setRango(data.minimunDistance.toString());
+            })
+            .catch((error) => console.error("Error al obtener parámetros:", error));
+    }, []);
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
         const {name,value} = e.target;
         if(name==='porcentaje'){
