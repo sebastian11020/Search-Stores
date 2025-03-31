@@ -1,17 +1,31 @@
 "use client";
 import "@/styles/globals.css";
 import AuthLayout from "@/components/layout/authLayout";
-import {usePathname} from "next/navigation";
-
+import DashboardLayout from "@/components/layout/dashboardLayout";
+import { usePathname } from "next/navigation";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
-    const excludePaths =["/", "/dashboard"];
+
+    const authPaths = ["/login", "/register", "/forgot-password"];
+    const isAuthPage = authPaths.includes(pathname);
+
+    const isDashboardPage = pathname.startsWith("/dashboard");
+
+    if (pathname === "/") {
+        return null;
+    }
+
     return (
         <html lang="es">
         <body>
-        {!excludePaths.includes(pathname)&&<AuthLayout>{children}</AuthLayout>}
-        {children}
+        {isAuthPage ? (
+            <AuthLayout>{children}</AuthLayout>
+        ) : isDashboardPage ? (
+            <DashboardLayout>{children}</DashboardLayout>
+        ) : (
+            children
+        )}
         </body>
         </html>
     );

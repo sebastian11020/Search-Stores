@@ -1,7 +1,7 @@
 "use client";
 import Header from "@/components/ui/header";
 import Verticalmenu from "@/components/ui/verticalmenu";
-export default function dashboardLayout({children}:{children:React.ReactNode}){
+export default function DashboardLayout({children}:{children:React.ReactNode}){
     return (
         <div className="flex flex-col h-screen">
             <header>

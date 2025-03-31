@@ -10,3 +10,18 @@ export const getParameters = async () => {
     }
 };
 
+export const saveParameters = async (data: any, token: string) => {
+    try {
+        const response = await api.post("http://localhost:8080/Store/Parameters", data, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
+            },
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Error en la petición:", error);
+        throw error;
+    }
+};
+
