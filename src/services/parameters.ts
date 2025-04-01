@@ -17,13 +17,14 @@ export const getParameters = async (token:string) => {
     }
 };
 
-export const saveParameters = async (data:ProductType, token: string) => {
+export const saveParameters = async (data: any, token: string) => {
     try {
-        return await api.post("http://localhost:8080/Store/Parameters", data, {
+        return await api.post("http://localhost:8080/Store/Parameters", JSON.stringify(data), {
             headers: {
+                "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`,
             },
-            withCredentials: true
+            transformRequest: [(data) => data]
         });
     } catch (error) {
         console.error("Error en la petición:", error);
