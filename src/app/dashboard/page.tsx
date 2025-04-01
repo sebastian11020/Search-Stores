@@ -59,7 +59,13 @@ function DashboardPage(){
     };
 
     useEffect(() => {
-        getParameters()
+        const token = Cookies.get("token");
+        if (!token) {
+            setErrorMessage("No se encontró el token. Inicia sesión nuevamente.");
+            setShowErrorAlert(true);
+            return;
+        }
+        getParameters(token)
             .then((data) => {
                 setProducts(data.products);
                 setPorcentaje(data.porcentageVirtualStore);
