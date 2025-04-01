@@ -28,7 +28,7 @@ function DashboardPage(){
                 porcentageVirtualStore: Number(porcentaje),
                 minimunDistance: Number(rango),
             };
-            const response = await saveParameters(payload, token);
+            const response = await saveParameters(payload,token);
             if(response.ok){
                 setSuccessMessage("Los parámetros se guardaron correctamente.");
                 setShowSuccessAlert(true);
@@ -53,8 +53,7 @@ function DashboardPage(){
     };
 
     useEffect(() => {
-        const token = localStorage.getItem("token") || "";
-        getParameters(token)
+        getParameters()
             .then((data) => {
                 setProducts(data.products);
                 setPorcentaje(data.porcentageVirtualStore);
