@@ -2,6 +2,7 @@
 import Product from "@/components/ui/product";
 import withAuth from "@/hoc/withAuth";
 import Button from "@/components/ui/buton";
+import Cookies from "js-cookie";
 import Modal from "@/components/ui/Modal";
 import React, {useState,useEffect} from "react";
 import {saveParameters} from "@/services/parameters";
@@ -22,14 +23,19 @@ function DashboardPage(){
 
     const handleSave = async () => {
         try {
-            const token = localStorage.getItem("token") || "";
+            const token = Cookies.get("token");
+            if (!token) {
+                setErrorMessage("No se encontró el token. Inicia sesión nuevamente.");
+                setShowErrorAlert(true);
+                return;
+            }
             const payload = {
                 products,
                 porcentageVirtualStore: Number(porcentaje),
                 minimunDistance: Number(rango),
             };
             const response = await saveParameters(payload,token);
-            if(response.ok){
+            if(response.status===200){
                 setSuccessMessage("Los parámetros se guardaron correctamente.");
                 setShowSuccessAlert(true);
                 setTimeout(() => setShowSuccessAlert(false), 3000);
