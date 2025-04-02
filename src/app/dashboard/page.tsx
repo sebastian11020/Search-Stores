@@ -30,10 +30,16 @@ function DashboardPage(){
                 return;
             }
             const payload = {
-                products,
-                porcentageVirtualStore: Number(porcentaje),
-                minimunDistance: Number(rango),
+                products: products.map(product => ({
+                    name: product.name,
+                    description: product.description,
+                    quantity: product.quantity,
+                    url: product.url
+                })),
+                percentageVirtualStore: Number(porcentaje),
+                minimumDistance: Number(rango),
             };
+
             const response = await saveParameters(payload,token);
             if(response.status===200){
                 setSuccessMessage("Los parámetros se guardaron correctamente.");

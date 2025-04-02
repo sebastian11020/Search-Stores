@@ -9,6 +9,7 @@ export const getParameters = async (token:string) => {
                     "Authorization": `Bearer ${token}`,
                 },
             })
+        console.log(response.data)
         return response.data;
     } catch (error: any) {
         console.error("Error fetching parameters:", error);
@@ -17,8 +18,9 @@ export const getParameters = async (token:string) => {
 };
 
 export const saveParameters = async (data: any, token: string) => {
+    console.log(data)
     try {
-        return await api.post("http://localhost:8080/Store/Parameters", data, {
+        return await api.post("http://localhost:8080/Store/Parameters", JSON.stringify(data), {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`,
