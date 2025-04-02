@@ -31,6 +31,7 @@ function DashboardPage(){
             }
             const payload = {
                 products: products.map(product => ({
+                    codProduct:product.codProduct,
                     name: product.name,
                     description: product.description,
                     quantity: product.quantity,
@@ -71,14 +72,20 @@ function DashboardPage(){
             setShowErrorAlert(true);
             return;
         }
+
         getParameters(token)
             .then((data) => {
+                console.log("Datos recibidos:", data.products);
                 setProducts(data.products);
                 setPorcentaje(data.porcentageVirtualStore);
                 setRango(data.minimunDistance);
             })
             .catch((error) => console.error("Error al obtener parámetros:", error));
     }, []);
+
+    useEffect(() => {
+        console.log("Productos actualizados:", products);
+    }, [products]);
     return(
         <div>
             {showSuccessAlert && <AlertSucsess title="Éxito" message={successMessage} onClose={() => setShowSuccessAlert(false)} />}
@@ -159,4 +166,4 @@ function DashboardPage(){
             </div>
     )
 }
-export default withAuth(DashboardPage);
+export default withAuth(DashboardPage,["SuperAdmin"]);

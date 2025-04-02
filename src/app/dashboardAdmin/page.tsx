@@ -169,4 +169,4 @@ function DashboardAdminPage() {
         </div>
     );
 }
-export default withAuth(DashboardAdminPage);
+export default withAuth(DashboardAdminPage,["Administrador"]);
