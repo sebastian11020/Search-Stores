@@ -5,6 +5,7 @@ import Input from "@/components/ui/input";
 import React, {useState} from "react";
 import {useRouter} from "next/navigation";
 import {login} from "@/services/auth";
+import {getRole} from "@/hoc/getRole";
 
 
 export default function loginPage(){
@@ -19,7 +20,13 @@ export default function loginPage(){
         setError("");
         try{
             const data = await login(email,password);
-            router.push("/dashboard")
+            const role = await getRole();
+            if(role === "SuperAdmin"){
+                router.push("/dashboard")
+            }
+            if(role==="Administrador"){
+                router.push("/dashboardAdmin")
+            }
         }catch (err:any){
             setError(err);
         }

@@ -9,7 +9,6 @@ export const getParameters = async (token:string) => {
                     "Authorization": `Bearer ${token}`,
                 },
             })
-        console.log(response.data)
         return response.data;
     } catch (error: any) {
         console.error("Error fetching parameters:", error);

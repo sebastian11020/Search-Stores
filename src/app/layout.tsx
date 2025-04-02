@@ -5,11 +5,9 @@ import DashboardLayout from "@/components/layout/dashboardLayout";
 import { usePathname } from "next/navigation";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-    const pathname = usePathname();
-
+    const pathname = usePathname();;
     const authPaths = ["/login", "/register", "/forgot-password"];
     const isAuthPage = authPaths.includes(pathname);
-
     const isDashboardPage = pathname.startsWith("/dashboard");
 
     if (pathname === "/") {
@@ -22,7 +20,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {isAuthPage ? (
             <AuthLayout>{children}</AuthLayout>
         ) : isDashboardPage ? (
-            <DashboardLayout>{children}</DashboardLayout>
+            <DashboardLayout>
+                {children}
+            </DashboardLayout>
         ) : (
             children
         )}

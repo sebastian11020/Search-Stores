@@ -9,7 +9,7 @@ export default function DashboardLayout({children}:{children:React.ReactNode}){
             </header>
             <div className="flex flex-1">
                 <aside className="w-64 h-full min-h-screen p-4">
-                    <Verticalmenu />
+                    <Verticalmenu/>
                 </aside>
                 {children}
             </div>
