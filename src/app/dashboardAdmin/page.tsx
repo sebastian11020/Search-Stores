@@ -17,7 +17,6 @@ function DashboardAdminPage() {
     const [stores, setStores] = useState<storeTypes[]>([]);
     const [errorMessage, setErrorMessage] = useState("");
     const [showErrorAlert, setShowErrorAlert] = useState(false);
-    const Map = dynamic(() => import("@/components/ui/MapComponent"), { ssr: false });
     const [showForm, setShowForm] = useState(false);
     const router = useRouter();
 
@@ -138,6 +137,9 @@ function DashboardAdminPage() {
                             </button>
                         </form>
                         <div className="w-full h-[300px]">
+                            <p className="mt-1.5 text-xs text-pretty text-gray-600">
+                                Por favor recuerde seleccionar una ubicación en el mapa
+                            </p>
                                    <MapComponent
                                        department={formData.department}
                                        city={formData.city}

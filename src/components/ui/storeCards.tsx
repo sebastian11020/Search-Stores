@@ -42,7 +42,7 @@ export default function StoreCards({ name, department, city, address, storeId }:
             <article className="overflow-hidden rounded-lg border border-gray-100 bg-white shadow-xs transition-transform duration-300 hover:scale-105 hover:shadow-lg">
                 <img
                     alt="Tienda"
-                    src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGV8fHx8&auto=format&fit=crop&w=1770&q=80"
+                    src="https://s3-us-west-2.amazonaws.com/wp-mpro-blog/wp-content/uploads/2018/10/13095309/s3-blog-punto-de-venta-abarrotes-01-min-min.jpg"
                     className="h-56 w-full object-cover"
                 />
                 <div className="p-4 sm:p-6">

@@ -23,14 +23,13 @@ type MapProps = {
     setFormData: React.Dispatch<React.SetStateAction<StoreFormData>>;
 };
 
-const DEFAULT_POSITION: [number, number] = [4.6097, -74.0817]; // Bogotá por defecto
+const DEFAULT_POSITION: [number, number] = [4.6097, -74.0817];
 
-// 🔵 Ícono personalizado del marcador
 const customIcon = L.icon({
-    iconUrl: markerIconSrc.src, // Usa la imagen importada
-    iconSize: [32, 32], // Tamaño del icono
-    iconAnchor: [16, 32], // Punto de anclaje
-    popupAnchor: [0, -32], // Ajusta el popup en relación al icono
+    iconUrl: markerIconSrc.src,
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -32],
 });
 
 const Map: React.FC<MapProps> = ({ department, city, address, latitude, longitude, setFormData }) => {
@@ -78,7 +77,6 @@ const Map: React.FC<MapProps> = ({ department, city, address, latitude, longitud
     );
 };
 
-// 📌 Mueve el mapa automáticamente cuando cambia la posición
 const MapUpdater = ({ position }: { position: [number, number] }) => {
     const map = useMap();
 
@@ -91,7 +89,6 @@ const MapUpdater = ({ position }: { position: [number, number] }) => {
     return null;
 };
 
-// 📍 Permite seleccionar una ubicación en el mapa con un marcador
 const LocationMarker = ({
                             setPosition,
                             setFormData,
