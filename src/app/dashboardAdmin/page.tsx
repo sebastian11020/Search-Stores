@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import StoreCards from "@/components/ui/storeCards";
 import {storeTypes} from "@/lib/storeTypes"
 import Cookies from "js-cookie";
-import {getParameters} from "@/services/parameters";
 import AlertError from "@/components/ui/alertError";
 import {useRouter} from "next/navigation";
 import {getStores} from "@/services/stores";
